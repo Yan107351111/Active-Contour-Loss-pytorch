@@ -21,8 +21,8 @@ def active_contour_loss(y_true, y_pred, weight=10):
   c_in  = torch.ones_like(y_pred)
   c_out = torch.zeros_like(y_pred)
 
-  region_in  = torch.mean( y_pred     * (y_true - C_in )**2 ) # equ.(12) in the paper, mean is used instead of sum.
-  region_out = torch.mean( (1-y_pred) * (y_true - C_out)**2 ) 
+  region_in  = torch.mean( y_pred     * (y_true - c_in )**2 ) # equ.(12) in the paper, mean is used instead of sum.
+  region_out = torch.mean( (1-y_pred) * (y_true - c_out)**2 ) 
   region = region_in + region_out
   
   loss =  weight*lenth + region
